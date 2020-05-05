@@ -4,6 +4,7 @@ import Header from '../components/Header'
 import Search from '../components/Search'
 import Carousel from '../components/Carousel'
 import CarouselItem from '../components/CarouselItem'
+import Footer from '../components/Footer'
 
 import '../assets/sass/App.scss'
 
@@ -15,6 +16,7 @@ const App = () => {
       <Carousel>
         <CarouselItem />
       </Carousel>
+      <Footer />
     </React.Fragment>
   )
 }
