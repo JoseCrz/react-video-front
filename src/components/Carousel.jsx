@@ -2,10 +2,10 @@ import React from 'react'
 
 import '../assets/sass/components/Carousel.scss'
 
-const Carousel = ({ children }) => {
+const Carousel = ({ children, title }) => {
   return (
     <section id="trending" className="Carousel">
-        <h2>Trending</h2>
+        <h2>{title}</h2>
         <div className="Carousel__container">
           {children}
         </div>

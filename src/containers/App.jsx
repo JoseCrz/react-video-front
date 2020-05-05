@@ -13,7 +13,13 @@ const App = () => {
     <React.Fragment>
       <Header />
       <Search />
-      <Carousel>
+      <Carousel title="trending">
+        <CarouselItem />
+      </Carousel>
+      <Carousel title="Your favourites">
+        <CarouselItem />
+      </Carousel>
+      <Carousel title="Originals">
         <CarouselItem />
       </Carousel>
       <Footer />
