@@ -1,0 +1,54 @@
+.Header {
+  width: 100%;
+  min-height: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &__logo {
+    margin-top: 10px;
+    margin-left: 10px;
+  }
+
+  &__nav-profile {
+    /* ? Solo así funcionó en Safari... */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    /* display: flex; */
+    margin-right: 10px;
+  }
+
+  &__nav-profile img {
+    margin-right: 8px;
+  }
+
+  &__nav-menu {
+    display: none;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    margin-right: -8px;
+    position: absolute;
+    width: 100px;
+    text-align: right;
+  }
+
+  &__nav-menu li {
+    margin: 10px 0;
+  }
+
+  &__nav-menu a {
+    color: white;
+    text-decoration: none;
+    margin-right: -5px;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__nav:hover &__nav-menu, 
+  &__nav-menu:hover {
+    display: block;
+  }
+}
