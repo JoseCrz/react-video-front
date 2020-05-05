@@ -3,6 +3,7 @@ import React from 'react'
 import Header from '../components/Header'
 import Search from '../components/Search'
 import Carousel from '../components/Carousel'
+import CarouselItem from '../components/CarouselItem'
 
 import '../assets/sass/App.scss'
 
@@ -12,7 +13,7 @@ const App = () => {
       <Header />
       <Search />
       <Carousel>
-        <h3>Mimi</h3>
+        <CarouselItem />
       </Carousel>
     </React.Fragment>
   )
