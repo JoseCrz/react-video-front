@@ -1,0 +1,25 @@
+.Search {
+  width: 80%;
+  margin: 0 auto;
+  text-align: center;
+
+  &__title {
+    font-size: 32px;
+  }
+
+  &__input {
+    font-size: 18px;
+    border-radius: 50px;
+    border: 1px solid white;
+    padding: 12px 24px;
+    width: 80%;
+    outline: none;
+    background: rgba(255, 255, 255, .15);
+    caret-color: white;
+    color: white;
+
+    &::placeholder {
+      color: white;
+    }
+  }
+}
