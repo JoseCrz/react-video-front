@@ -1,0 +1,130 @@
+.Login {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 30px 0;
+  min-height: calc(100vh - 200px);
+  font-size: 16px;
+  
+  &__title {
+    font-size: 2em;
+    margin: 0;
+  }
+  
+  &__container {
+    background: rgba(255, 255, 255, .1);
+    border: 2px solid white;
+    border-radius: 10px;
+    padding: 0px 40px;
+    min-height: 700px;
+    width: 450px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    
+    &--sign-up {
+      min-height: 650px;
+    }
+  }
+  
+  &__form {
+    display: flex;
+    flex-direction: column;
+
+    &--sign-up {
+      min-height: 400px;
+      justify-content: space-around;
+    }
+  }
+
+  &__options {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+  }
+  
+  &__alternative {
+    text-align: center;
+  }
+
+  &__input {
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid white;
+    color: var(--main-text);
+    padding: 12px 6px;
+    font-size: 16px;
+    outline: none;
+    margin-bottom: 20px;
+    font-family: inherit;
+    transition: 150ms;
+
+    &:focus {
+      border-bottom: 4px solid white;
+    }
+    
+    &::placeholder {
+      color: white;
+    }
+  }
+  
+  &__link {
+    color: var(--main-text);
+    text-decoration: none;
+    
+    &--bold {
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    &:hover {
+      text-decoration: underline;
+    }
+    
+  }
+
+  &__button {
+    font-family: inherit;
+    background: rgba(255, 255, 255, .3);
+    border: none;
+    border-radius: 30px;
+    padding: 12px 24px;
+    color: var(--main-text);
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: cubic-bezier(0.215, 0.610, 0.355, 1) 450ms;
+    outline: none;
+    width: 80%;
+    margin: 0 auto;
+    letter-spacing: 1px;
+
+    &:hover {
+      /* transform: translateY(-5px); */
+      background: rgba(255, 255, 255, .4);
+    }
+    
+    &:active {
+      transform: translateY(5px);
+    }
+  }
+
+  &__label {
+    cursor: pointer;
+  }
+
+  &__img-container {
+    display: flex;
+    align-items: center;
+
+    &--icon-text{
+      margin: 10px 0;
+
+      a {
+        margin: 0px 5px;
+      }
+    }
+  }
+}
