@@ -10,9 +10,9 @@ import useInitialState from '../hooks/useInitialState'
 
 import '../assets/sass/App.scss'
 
-const App = () => {
+const Home = () => {
   
-  const videos = useInitialState('http://localhost:3000/initalState')
+  const videos = useInitialState('http://localhost:3000/initialState')
 
   console.log(videos)
   return (
@@ -44,4 +44,4 @@ const App = () => {
   )
 }
 
-export default App
+export default Home
