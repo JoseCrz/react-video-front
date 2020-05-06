@@ -1,10 +1,10 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 import '../assets/sass/components/CarouselItem.scss'
 
 import playIcon from '../assets/static/play.svg'
 import addIcon from '../assets/static/add.svg'
-import image from '../assets/static/blade-runner-2049.jpg'
 
 const CarouselItem = ({ title, year, contentRating, duration, cover }) => {
   return (
@@ -20,6 +20,14 @@ const CarouselItem = ({ title, year, contentRating, duration, cover }) => {
       </div>
     </div>
   )
+}
+
+CarouselItem.propTypes = {
+  title: PropTypes.string,
+  year: PropTypes.number,
+  contentRating: PropTypes.string,
+  duration: PropTypes.number,
+  cover: PropTypes.string
 }
 
 export default CarouselItem
