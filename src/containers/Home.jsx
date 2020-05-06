@@ -17,7 +17,6 @@ const Home = () => {
   console.log(videos)
   return (
     <React.Fragment>
-      <Header />
       <Search />
       {videos.mylist.length > 0 &&
         <Carousel title="mylist">
@@ -38,8 +37,6 @@ const Home = () => {
           <CarouselItem  key={item.id} {...item}/>
         )}
       </Carousel>
-
-      <Footer />
     </React.Fragment>
   )
 }
