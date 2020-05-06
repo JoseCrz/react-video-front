@@ -9,7 +9,11 @@ import Footer from '../components/Footer'
 import '../assets/sass/App.scss'
 
 const App = () => {
-  const [videos, setVideos] = useState([])
+  const [videos, setVideos] = useState({
+    mylist: [],
+    trends: [],
+    originals: [],
+  })
 
   useEffect(() => {
     fetch('http://localhost:3000/initalState')
@@ -24,15 +28,26 @@ const App = () => {
     <React.Fragment>
       <Header />
       <Search />
-      <Carousel title="trending">
-        <CarouselItem />
+      {videos.mylist.length > 0 &&
+        <Carousel title="mylist">
+          {videos.mylist.map(item => 
+            <CarouselItem  key={item.id} {...item}/>
+          )}
+        </Carousel>
+      }
+
+      <Carousel title="trends">
+        {videos.trends.map(item => 
+          <CarouselItem  key={item.id} {...item}/>
+        )}
       </Carousel>
-      <Carousel title="Your favourites">
-        <CarouselItem />
+
+      <Carousel title="originals">
+        {videos.originals.map(item => 
+          <CarouselItem  key={item.id} {...item}/>
+        )}
       </Carousel>
-      <Carousel title="Originals">
-        <CarouselItem />
-      </Carousel>
+
       <Footer />
     </React.Fragment>
   )
