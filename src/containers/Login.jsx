@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 import twitterIcon from '../assets/static/twitter-icon.svg'
 import googleIcon from '../assets/static/google-icon.svg'
@@ -18,21 +19,21 @@ const Login = () => {
                     <label className="Login__label" htmlFor="remember">
                         <input id="remember" type="checkbox" value="remember" name="remember" />Remember me
                     </label>
-                    <a className="Login__link" href="#">Forgot my password</a>
+                    <Link className="Login__link" to="/">Forgot my password</Link>
                 </div>
             </form>
             <article className="Login__social">
                 <figure className="Login__img-container Login__img-container--icon-text">
                     <img src={googleIcon} alt="Google icon" width="30px" />
-                    <a href="#" className="Login__link">Sign in with Google</a>
+                    <Link to="/" className="Login__link">Sign in with Google</Link>
                 </figure>
                 <figure className="Login__img-container Login__img-container--icon-text">
                     <img src={twitterIcon} alt="Twitter icon" width="30px" />
-                    <a href="#" className="Login__link">Sign in with Twitter</a>
+                    <Link to="/" className="Login__link">Sign in with Twitter</Link>
                 </figure>
             </article>
             <article className="Login__sign-up">
-                <p>Don't have an account? <a className="Login__link Login__link--bold" href="./sign-up.html">Sign up!</a></p>
+                <p>Don't have an account? <Link to="/register" className="Login__link Login__link--bold">Sign up!</Link></p>
             </article>
         </div>
     </section>

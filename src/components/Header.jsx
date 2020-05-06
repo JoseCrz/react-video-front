@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 import '../assets/sass/components/Header.scss'
 
@@ -9,7 +10,9 @@ const Header = () => {
   return (
     <header className="Header">
         <figure className="Header__logo-container">
-            <img className="Header__logo" src={logo} alt="Reactivid Logo" width="150px" />
+            <Link to="/">
+                <img className="Header__logo" src={logo} alt="Reactivid Logo" width="150px" />
+            </Link>
         </figure>
         <nav className="Header__nav">
             <div className="Header__nav-profile">
@@ -18,7 +21,7 @@ const Header = () => {
             </div>
             <ul className="Header__nav-menu">
                 <li><a href="#">Settings</a></li>
-                <li><a href="#">Sign out</a></li>
+                <li><Link to="/login">Log in</Link></li>
             </ul>
         </nav>
     </header>
