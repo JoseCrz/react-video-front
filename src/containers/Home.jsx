@@ -12,7 +12,7 @@ import '../assets/sass/App.scss'
 
 const Home = () => {
   
-  const videos = useInitialState('http://localhost:3000/initialState')
+  const videos = useInitialState('http://localhost:3001/initialState')
 
   console.log(videos)
   return (
