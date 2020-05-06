@@ -6,22 +6,13 @@ import Carousel from '../components/Carousel'
 import CarouselItem from '../components/CarouselItem'
 import Footer from '../components/Footer'
 
+import useInitialState from '../hooks/useInitialState'
+
 import '../assets/sass/App.scss'
 
 const App = () => {
-  const [videos, setVideos] = useState({
-    mylist: [],
-    trends: [],
-    originals: [],
-  })
-
-  useEffect(() => {
-    fetch('http://localhost:3000/initalState')
-    .then(response => response.json())
-    .then(data => {
-      setVideos(data)
-    })
-  }, [])
+  
+  const videos = useInitialState('http://localhost:3000/initalState')
 
   console.log(videos)
   return (
