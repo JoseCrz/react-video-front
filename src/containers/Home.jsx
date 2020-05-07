@@ -1,39 +1,33 @@
 import React from 'react'
+import { connect } from 'react-redux'
 
-import Header from '../components/Header'
 import Search from '../components/Search'
 import Carousel from '../components/Carousel'
 import CarouselItem from '../components/CarouselItem'
-import Footer from '../components/Footer'
-
-import useInitialState from '../hooks/useInitialState'
 
 import '../assets/sass/App.scss'
 
-const Home = () => {
+const Home = ({ myList, trends, originals }) => {
   
-  const videos = useInitialState('http://localhost:3001/initialState')
-
-  console.log(videos)
   return (
     <React.Fragment>
       <Search />
-      {videos.mylist.length > 0 &&
-        <Carousel title="mylist">
-          {videos.mylist.map(item => 
+      {myList.length > 0 &&
+        <Carousel title="myList">
+          {myList.map(item => 
             <CarouselItem  key={item.id} {...item}/>
           )}
         </Carousel>
       }
 
       <Carousel title="trends">
-        {videos.trends.map(item => 
+        {trends.map(item => 
           <CarouselItem  key={item.id} {...item}/>
         )}
       </Carousel>
 
       <Carousel title="originals">
-        {videos.originals.map(item => 
+        {originals.map(item => 
           <CarouselItem  key={item.id} {...item}/>
         )}
       </Carousel>
@@ -41,4 +35,12 @@ const Home = () => {
   )
 }
 
-export default Home
+const mapStateToProps = state => {
+  return {
+    myList: state.myList,
+    trends: state.trends,
+    originals: state.originals
+  }
+}
+
+export default connect(mapStateToProps, null)(Home)
