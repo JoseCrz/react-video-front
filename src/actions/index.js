@@ -4,3 +4,10 @@ export const setFavorite = payload => {
     payload
   }
 }
+
+export const deleteFavorite = payload => {
+  return {
+    type: 'DELETE_FAVORITE',
+    payload
+  }
+}
