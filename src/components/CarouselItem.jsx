@@ -10,7 +10,7 @@ import addIcon from '../assets/static/add.svg'
 import deleteIcon from '../assets/static/delete-icon.svg'
 
 const CarouselItem = props => {
-  const { id, title, year, contentRating, duration, cover } = props
+  const { id, title, year, contentRating, duration, cover, isMyList } = props
 
   const handleSetFavorite = () => {
     props.setFavorite({
@@ -32,9 +32,10 @@ const CarouselItem = props => {
       <img className="Carousel-item__img" src={cover} alt={title} />
       <div className="Carousel-item__details">
           <div>
-              <img src={playIcon} alt="Play Button" width="30px" />
-              <img onClick={handleSetFavorite}  src={addIcon} alt="Add to list Button" width="30px" />
-              <img onClick={() => handleDeleteFavorite(id)}  src={deleteIcon} alt="Delete from list Button" width="30px" />
+              <img className="Carousel-item__button" src={playIcon} alt="Play Button" width="30px" />
+              {isMyList 
+              ? <img className="Carousel-item__button" onClick={() => handleDeleteFavorite(id)}  src={deleteIcon} alt="Delete from list Button" width="30px" />
+              : <img className="Carousel-item__button" onClick={handleSetFavorite}  src={addIcon} alt="Add to list Button" width="30px" /> }
           </div>
           <p className="Carousel-item__title">{title}</p>
           <p className="Carousel-item__subtitle">{`${year} | ${contentRating} ${duration} mins`}</p>

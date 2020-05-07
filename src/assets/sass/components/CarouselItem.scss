@@ -50,4 +50,8 @@
     font-size: 12px;
     transition: cubic-bezier(0.215, 0.610, 0.355, 1) 450ms;
   }
+
+  &__button {
+    margin: 0 2px;
+  }
 }
