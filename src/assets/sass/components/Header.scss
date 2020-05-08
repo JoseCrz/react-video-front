@@ -8,6 +8,7 @@
   &__logo {
     margin-top: 10px;
     margin-left: 10px;
+    width: 150px;
   }
 
   &__nav-profile {
@@ -50,5 +51,10 @@
   &__nav:hover &__nav-menu, 
   &__nav-menu:hover {
     display: block;
+  }
+
+  &__profile {
+    width: 50px;
+    border-radius: 50%;
   }
 }
