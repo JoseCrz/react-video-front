@@ -38,6 +38,11 @@ const reducer = (state, action) => {
               || state.originals.find(item => item.id === Number(action.payload))
               || []
       }
+    case 'FILTER_REQUEST':
+      return {
+        ...state,
+        filter: action.payload,
+      }
     default:
       return state
   }

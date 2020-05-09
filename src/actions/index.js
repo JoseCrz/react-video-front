@@ -39,3 +39,10 @@ export const getVideoSource = payload => {
     payload
   }
 }
+
+export const filterRequest = payload => {
+  return {
+    type: 'FILTER_REQUEST',
+    payload
+  }
+}

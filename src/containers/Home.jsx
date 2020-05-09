@@ -7,27 +7,31 @@ import CarouselItem from '../components/CarouselItem'
 
 import '../assets/sass/App.scss'
 
-const Home = ({ myList, trends, originals }) => {
+
+const Home = ({ myList, trends, originals, filter }) => {
+  const filteredTrends = trends.filter(item => item.title.toLowerCase().includes(filter.toLowerCase()))
+  const filteredOriginals = originals.filter(item => item.title.toLowerCase().includes(filter.toLowerCase()))
+  const filteredMyList = myList.filter(item => item.title.toLowerCase().includes(filter.toLowerCase()))
   
   return (
     <React.Fragment>
       <Search />
-      {myList.length > 0 &&
+      {filteredMyList.length > 0 &&
         <Carousel title="myList">
-          {myList.map(item => 
+          {filteredMyList.map(item => 
             <CarouselItem  key={item.id} {...item} isMyList/>
           )}
         </Carousel>
       }
 
       <Carousel title="trends">
-        {trends.map(item => 
+        {filteredTrends.map(item => 
           <CarouselItem  key={item.id} {...item}/>
         )}
       </Carousel>
 
       <Carousel title="originals">
-        {originals.map(item => 
+        {filteredOriginals.map(item => 
           <CarouselItem  key={item.id} {...item}/>
         )}
       </Carousel>
@@ -39,7 +43,8 @@ const mapStateToProps = state => {
   return {
     myList: state.myList,
     trends: state.trends,
-    originals: state.originals
+    originals: state.originals,
+    filter: state.filter
   }
 }
 
