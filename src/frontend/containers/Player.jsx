@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
-import NotFound from '../containers/NotFound'
+import NotFound from './NotFound'
 import { Redirect } from 'react-router-dom'
 
 import { getVideoSource } from '../actions'

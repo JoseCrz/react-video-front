@@ -7,11 +7,15 @@
     "start": "npm-run-all -p client server",
     "build": "webpack --mode production",
     "client": "webpack-dev-server --open --mode development",
-    "server": "json-server --port 3001 --watch server/db.json"
+    "server": "json-server --port 3001 --watch server/db.json",
+    "backend": "node src/backend/index"
   },
   "author": "Jose Cuevas",
   "license": "ISC",
   "dependencies": {
+    "@babel/register": "^7.9.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
     "md5": "^2.2.1",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
