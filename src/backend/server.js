@@ -49,6 +49,7 @@ if (DEV) {
 const setResponse = (html, preloadedState, manifest) => {
   const mainStyles = manifest ? manifest['main.css'] : 'assets/app.css'
   const mainScript = manifest ? manifest['main.js'] : 'assets/app.js'
+  const vendorBuild = manifest ? manifest['vendors.js'] : '/assets/vendor.js'
 
   return (`
     <!DOCTYPE html>
@@ -67,6 +68,7 @@ const setResponse = (html, preloadedState, manifest) => {
           window.__PRELOADED_STATE__ = ${JSON.stringify(preloadedState).replace(/</g,'\\u003c')}
         </script>
       <script type="text/javascript" src="${mainScript}"></script>
+      <script type="text/javascript" src="${vendorBuild}"></script>
     </body>
     </html>
   `)
