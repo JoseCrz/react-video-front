@@ -7,6 +7,8 @@ import { createStore } from 'redux'
 import { StaticRouter } from 'react-router-dom'
 import { renderRoutes } from 'react-router-config'
 import serverRoutes from './routes/serverRoutes'
+
+import Layout from '../frontend/components/Layout'
 import reducer from '../frontend/reducers'
 import initialState from '../frontend/initialState'
 
@@ -55,7 +57,9 @@ const renderApp = (req, res) => {
   const html = renderToString(
     <Provider store={store} >
       <StaticRouter location={req.url} context={ { } }>
-        {renderRoutes(serverRoutes)}
+        <Layout>
+          {renderRoutes(serverRoutes)}
+        </Layout>
       </StaticRouter>
     </Provider>
   )
