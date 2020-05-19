@@ -7,7 +7,9 @@ import { Provider } from 'react-redux'
 import { createStore } from 'redux'
 import { StaticRouter } from 'react-router-dom'
 import { renderRoutes } from 'react-router-config'
+
 import serverRoutes from './routes/serverRoutes'
+import getManifest from './utils/getManifest'
 
 import Layout from '../frontend/components/Layout'
 import reducer from '../frontend/reducers'
@@ -32,20 +34,29 @@ if (DEV) {
   app.use(webpackHotMiddleware(webpackCompiler))
 
 } else {
+  app.use((req, res, next) => {
+    if(!req.manifest) {
+      req.manifest = getManifest()
+      next()
+    }
+  })
   app.use(express.static(`${__dirname}/public`))
   app.use(helmet())
   app.use(helmet.permittedCrossDomainPolicies())
   app.disable('x-powered-by')
 }
 
-const setResponse = (html, preloadedState) => {
+const setResponse = (html, preloadedState, manifest) => {
+  const mainStyles = manifest ? manifest['main.css'] : 'assets/app.css'
+  const mainScript = manifest ? manifest['main.js'] : 'assets/app.js'
+
   return (`
     <!DOCTYPE html>
     <html lang="en">
     <head>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <link rel="stylesheet" href="assets/app.css" type="text/css">
+      <link rel="stylesheet" href="${mainStyles}" type="text/css">
       <title>React Video</title>
     </head>
     <body>
@@ -55,7 +66,7 @@ const setResponse = (html, preloadedState) => {
       <script>
           window.__PRELOADED_STATE__ = ${JSON.stringify(preloadedState).replace(/</g,'\\u003c')}
         </script>
-      <script type="text/javascript" src="assets/app.js"></script>
+      <script type="text/javascript" src="${mainScript}"></script>
     </body>
     </html>
   `)
@@ -75,7 +86,7 @@ const renderApp = (req, res) => {
     </Provider>
   )
 
-  res.send(setResponse(html, preloadedState))
+  res.send(setResponse(html, preloadedState, req.manifest))
 }
 
 app.get('*', renderApp)

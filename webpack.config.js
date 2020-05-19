@@ -3,6 +3,7 @@ const webpack = require('webpack')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
 const CompressionWebpackPlugin = require('compression-webpack-plugin')
+const ManifestPlugin = require('webpack-manifest-plugin')
 const { DEV } = require('./src/config')
 
 const entry = ['./src/frontend/index.js']
@@ -18,7 +19,7 @@ module.exports = {
   mode,
   output: {
     path: path.resolve(__dirname, 'src/backend/public'),
-    filename: 'assets/app.js',
+    filename: DEV ? 'assets/app.js' : 'assets/app-[hash].js',
     publicPath: '/',
   },
   resolve: {
@@ -69,8 +70,9 @@ module.exports = {
       test: /\.js$|\.css$/,
       filename: '[path].gz'
     }),
+    DEV ? () => {} : new ManifestPlugin(),
     new MiniCssExtractPlugin({
-      filename: 'assets/app.css'
+      filename: DEV ? 'assets/app.css' : 'assets/app-[hash].css'
     })
   ]
 }
