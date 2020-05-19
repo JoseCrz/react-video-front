@@ -32,7 +32,7 @@ if (DEV) {
 
 }
 
-const setResponse = html => {
+const setResponse = (html, preloadedState) => {
   return (`
     <!DOCTYPE html>
     <html lang="en">
@@ -46,7 +46,10 @@ const setResponse = html => {
       <div id="app">
         ${html}
       </div>
-      <script  type="text/javascript" src="assets/app.js"></script>
+      <script>
+          window.__PRELOADED_STATE__ = ${JSON.stringify(preloadedState).replace(/</g,'\\u003c')}
+        </script>
+      <script type="text/javascript" src="assets/app.js"></script>
     </body>
     </html>
   `)
@@ -54,6 +57,8 @@ const setResponse = html => {
 
 const renderApp = (req, res) => {
   const store = createStore(reducer, initialState)
+  const preloadedState = store.getState()
+
   const html = renderToString(
     <Provider store={store} >
       <StaticRouter location={req.url} context={ { } }>
@@ -64,7 +69,7 @@ const renderApp = (req, res) => {
     </Provider>
   )
 
-  res.send(setResponse(html))
+  res.send(setResponse(html, preloadedState))
 }
 
 app.get('*', renderApp)
