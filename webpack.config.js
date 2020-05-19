@@ -1,6 +1,8 @@
 const path = require('path')
 const webpack = require('webpack')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const TerserPlugin = require('terser-webpack-plugin')
+const CompressionWebpackPlugin = require('compression-webpack-plugin')
 const { DEV } = require('./src/config')
 
 const entry = ['./src/frontend/index.js']
@@ -21,6 +23,10 @@ module.exports = {
   },
   resolve: {
     extensions: ['.js', '.jsx']
+  },
+  optimization: {
+    minimize: true,
+    minimizer: [ new TerserPlugin() ]
   },
   module: {
     rules: [
@@ -59,6 +65,10 @@ module.exports = {
   },
   plugins: [
     DEV ? new webpack.HotModuleReplacementPlugin() : () => {},
+    DEV ? () => {} : new CompressionWebpackPlugin({
+      test: /\.js$|\.css$/,
+      filename: '[path].gz'
+    }),
     new MiniCssExtractPlugin({
       filename: 'assets/app.css'
     })
