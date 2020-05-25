@@ -25,9 +25,15 @@ const { DEV, PORT } = config
 
 const app = express()
 
+// ? Body Parser
 app.use(express.json())
+// ? Cookie Parser
 app.use(cookieParser())
+// ? Passport Initialization
 app.use(passport.initialize())
+
+// ? Basic Strategy
+require('./utils/auth/strategies/basic')
 
 if (DEV) {
   console.log('Working in development mode')
