@@ -33,7 +33,7 @@ const Register = props => {
                 <input onChange={handleInput} name="name" className="Login__input" type="text" placeholder="Username" aria-label="Enter a username" />
                 <input onChange={handleInput} name="email" className="Login__input" type="email" placeholder="Email" aria-label="Enter an email" />
                 <input onChange={handleInput} name="password" className="Login__input" type="password" placeholder="Password" aria-label="Enter a password" />
-                <button className="Login__button" type="submit" aria-label="Login up button">Login up</button>
+                <button className="Login__button" type="submit" aria-label="Login up button">Sign up</button>
             </form>
             <article className="Login__sign-up">
                 <p>Already a member? <Link to="./login" className="Login__link Login__link--bold">Log in</Link></p>
