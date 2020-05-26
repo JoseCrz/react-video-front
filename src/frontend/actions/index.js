@@ -96,3 +96,15 @@ export const loginUser = ({ email, password }, redirectUrl) => {
     })
   }
 }
+
+export const saveFavorite = payload => {
+  return dispatch => {
+    axios.post('/user-movies', payload)
+    .then(({ data }) => {
+      dispatch(setFavorite(data))
+    })
+    .catch(error => {
+      dispatch(setError(error))
+    })
+  }
+}
